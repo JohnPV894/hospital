@@ -1,0 +1,14 @@
+{
+  "name": "hospital",
+  "version": "1.0.0",
+  "description": "Gestion de hospital",
+  "main": "main.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "John Arenales",
+  "license": "ISC",
+  "dependencies": {
+    "mongodb": "^6.15.0"
+  }
+}
