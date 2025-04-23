@@ -19,7 +19,7 @@
 
 //Dependencias
 const {MongoClient,ObjectId} = require('mongodb');
-const { DateTime } = require("luxon");
+const { DateTime,Interval } = require("luxon");
 const readline = require('readline').createInterface({
       input: process.stdin,
       output: process.stdout
@@ -212,10 +212,62 @@ async function menuAdministrativo(params) {
                         }
                         break;
                   case "5":
-                        
+                        console.log("\nIngrese el filtro que desea utilizar");
+                        let pregunta = hacerPregunta(`
+                              1) Por dia
+                              2) Por Mes
+                              3) Por Semana
+                              `);
                         break;
                   case "6":
-                        
+                              let asistenciaFiltro = await hacerPregunta(`
+                              Ver los que asistieron o no asistieron
+                              1) Asistieron 
+                              2) No asistieron
+                              numero :`);
+                              if (asistenciaFiltro == "1") {
+                                    asistenciaFiltro = true;
+                              }else{
+                                    asistenciaFiltro = false;}
+                              let mantenerBucle = true;
+                              while (mantenerBucle) {
+                                    let fechaInicialDia = await hacerPregunta("Dia Inicial :");
+                                    let fechaInicialMes = await hacerPregunta("Mes Inicial :");
+                                    let fechaInicialAño = await hacerPregunta("Año Inicial :");
+                                    let fechaFinalDia = await hacerPregunta("Dia Final :");
+                                    let fechaFinalMes = await hacerPregunta("Mes Final :");
+                                    let fechaFinalAño = await hacerPregunta("Año Final :");
+                                    let fechaInicial = DateTime.fromObject({
+                                          day: parseInt(fechaInicialDia),
+                                          month: parseInt(fechaInicialMes),
+                                          year: parseInt(fechaInicialAño)
+                                    });
+                                    let fechaFinal = DateTime.fromObject({
+                                          day: parseInt(fechaFinalDia),
+                                          month: parseInt(fechaFinalMes),
+                                          year: parseInt(fechaFinalAño)
+                                    });
+                                    if (fechaInicial.isValid && fechaFinal.isValid) {
+                                         mantenerBucle = false;
+                                          
+                                    }
+                                    let datosRangoFechas = {
+                                          "fechaInicial": fechaInicial.toFormat("dd/MM/yyyy"),
+                                          "fechaFinal": fechaFinal.toFormat("dd/MM/yyyy"),
+                                          "filtroAsistencia": asistenciaFiltro
+                                    }
+                                    let lista = await citasEntreFechas(datosRangoFechas);
+                                    console.log("\nCitas encontradas \n");
+                                    console.table(lista);
+                              }
+
+                              //console.clear();
+                              //if (lista == null) {
+                              //      console.log("\nNo se encontraron citas en el rango de fechas\n");
+                              //      
+                              //}else{
+//
+                              //}
                         break;
                   case "7":
                         console.log("Adios");
@@ -255,7 +307,7 @@ async function verCitas() {
       await mongo_cliente.connect();
       let documentoCitas = mongo_cliente.db("hospital").collection("citas");
       let todasLasCitas = await documentoCitas.find().toArray();
-      console.table(todasLasCitas);
+      console.table("\n",todasLasCitas);
 }
 //Ver todas las pacientes de un paciente 
 //@params "id paciente"
@@ -269,17 +321,19 @@ async function verCitas_paciente(idPaciente) {
 //Ver todas las citas dentro de un rango de fechas y elegir si quiero ver: todas, asistieron, no asistieron
 //@params fecha inicial, fecha final
 async function citasEntreFechas(datosCita) {
+      console.log(datosCita);
+      
       await mongo_cliente.connect();
       let documentoCitas = mongo_cliente.db("hospital").collection("citas");
       let todasLasCitas = await documentoCitas.find({"asistieron":datosCita.filtroAsistencia}).toArray();
       if(datosCita.fechaInicial != null && datosCita.fechaFinal != null && datosCita.filtroAsistencia != null){
             const fechaInicial = DateTime.fromISO(datosCita.fechaInicial);
             const fechaFinal = DateTime.fromISO(datosCita.fechaFinal);
-            let intervalo = Interval.fromDateTimes(fechaInicial, fechaFinal);
+            let intervalo = Interval.fromDateTimes( fechaFinal,fechaInicial);
             let listaFiltrada=[];
             for (let index = 0; index < todasLasCitas.length; index++) {
                   
-                  if (intervalo.contains(todasLasCitas[index].fecha)) {
+                  if (intervalo.contains(DateTime.fromISO(todasLasCitas[index].fecha))) {
                         listaFiltrada.push(todasLasCitas[index]);
                   }
             }
