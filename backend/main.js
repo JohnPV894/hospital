@@ -428,5 +428,6 @@ async function creaEspecialista(objetoDatos) {
 }
 //creaEspecialista({nombre:"Orto Souto",rama:"Cirugia Plastica",dni:"90333355B"});
 //verPacientesIndex();
-menuAdministrativo()
+//menuAdministrativo()
 //verEspecialistasIndex();
+export{validarLogin};
