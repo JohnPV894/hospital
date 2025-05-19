@@ -279,7 +279,7 @@ async function menuAdministrativo(params) {
             }
       }
 }
-
+menuAdministrativo();
 //
 //Comprobar Credenciales de inicio de sesion
 async function validarLogin(objetoCredenciales){
@@ -430,4 +430,3 @@ async function creaEspecialista(objetoDatos) {
 //verPacientesIndex();
 //menuAdministrativo()
 //verEspecialistasIndex();
-export{validarLogin};

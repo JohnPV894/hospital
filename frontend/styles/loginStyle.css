@@ -15,7 +15,7 @@ main{
       display: flex;
       justify-content: center;
       align-items: center;
-      background: #F0F0F0;
+      background: #dad9d9c7;
 
 }
 section{
@@ -30,13 +30,13 @@ section{
 /**/
 main form{
       border-radius: 16px;
-      height: 50%;
-      width: 35%;
+
+      width: 36%;
       padding: 4em;
       padding-top: 2em;
       padding-bottom: 4em;
       background: rgb(255 255 255);
-      border: solid 5px rgba(175, 175, 175, 0.295);
+      border: solid 5px rgba(175, 175, 175, 0.356);
 
 }
 main form h1 {
@@ -48,7 +48,7 @@ form input {
       border:solid 3px rgba(12, 12, 12, 0.103);
       box-sizing: border-box;
       background: #EFEFEF;
-      color: #A9A9A9;
+      color: #696969;
       padding: 12px 10px;
       font-size: 1em;
       width: 100%;
