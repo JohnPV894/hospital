@@ -21,7 +21,7 @@ $(document).ready(function(){
                                     window.location.href = "homeAdministrador.html";
                               }
                               else if(response.logeado){
-                                    window.location.href = "homeAdministrativo.html"
+                                    window.location.href = "pacientes.html"
                               }
                               else{
                                     console.log("No esta logeado");

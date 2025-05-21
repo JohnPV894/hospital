@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Gestion Citas</title>
+  <link rel="stylesheet" href="../styles/administrativoStyle.css">
+  <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+
+</head>
+<body>
+    <div class="desplegable" id="contenedorFormPaciente" style="display: none;">
+      <h1>CREAR PACIENTE</h1>
+      <br><br>
+    <form action="" id="crearPaciente">
+      <br>
+      <h2>Nombre Completo</h1>
+      <input type="text" name="nombre" id="">
+      <br>
+      <h2>DNI</h1>
+      <input type="text" name="dni" id="">
+      <br>
+      <h2>TELEFONO</h1>
+      <input type="text" name="telefono" id="">
+      <br>
+      <h2>FECHA NACIMIENTO</h1>
+      <input type="date" name="fechaNacimiento" id="">
+      <br><br>
+      <span>
+        <input type="button" value="ENVIAR" id="enviarCrearPaciente">
+        <input type="button" value="CANCELAR" id="cancelarCrearPaciente">
+      </span>
+      <br>
+    </form>
+  </div>
+  <div class="desplegable" id="contenedorFormPaciente" style="display: none;">
+      <h1>CREAR PACIENTE</h1>
+      <br><br>
+    <form action="" id="crearPaciente">
+      <br>
+      <h2>Nombre Completo</h1>
+      <input type="text" name="nombre" id="">
+      <br>
+      <h2>DNI</h1>
+      <input type="text" name="dni" id="">
+      <br>
+      <h2>TELEFONO</h1>
+      <input type="text" name="telefono" id="">
+      <br>
+      <h2>FECHA NACIMIENTO</h1>
+      <input type="date" name="fechaNacimiento" id="">
+      <br><br>
+      <span>
+        <input type="button" value="ENVIAR" id="enviarCrearPaciente">
+        <input type="button" value="CANCELAR" id="cancelarCrearPaciente">
+      </span>
+      <br>
+    </form>
+  </div>
+  <!--<img src="../img/pacienteIcon.png" alt="Crear Usuario" <img src="../img/iconCitas1.png" alt="Crear Usuario">>-->
+  <header>
+    
+    <div class="botones-superiores">
+      <button class="boton-icono" id="">
+        <span> Paciente</span>
+        
+      </button>
+
+      <button class="boton-icono">
+        <span> Cita</span>
+         
+      </button>
+      
+    </div>
+
+    <div class="icono-perfil">
+      <button class="boton-icono">
+        <img src="../img/perfilIcon.png" alt="Perfil">
+      </button>
+    </div>
+  </header>
+  <main>
+      <span id="">
+          <input type="button" value="Crear Paciente" id="desplegarCrearPaciente">
+          <input type="button" value="Ver Historial Paciente">
+      </span>
+      <br>
+      <br>
+    <div class="contenedor-cuadros">
+      <div class="tarjeta doctor">
+        <div class="info-doctor">
+          <img src="../img/perfilIcon.png" alt="Foto" class="avatar">
+          <div class="texto">
+            <strong>Nombre</strong><br>
+            Apellido apellido<br><br>
+            Rama: Neumología<br>
+            Nacimiento: 01/01/1980<br>
+            DNI: 60373355B
+          </div>
+        </div>
+      </div>
+
+      <!-- Más tarjetas vacías -->
+      <div class="tarjeta"></div>
+      <div class="tarjeta"></div>
+      <div class="tarjeta"></div>
+      <div class="tarjeta"></div>
+      <div class="tarjeta"></div>
+      <div class="tarjeta"></div>
+      <div class="tarjeta"></div>
+    </div>
+  </main>
+</body>
+<script src="../scripts/administrativo.js"></script>
+</html>
