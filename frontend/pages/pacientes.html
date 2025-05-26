@@ -4,7 +4,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Gestion Pacientes</title>
-  <link rel="stylesheet" href="../styles/administrativoStyle.css">
+  <link rel="stylesheet" href="../styles/pacientes.css">
   <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
 
 </head>
@@ -14,27 +14,29 @@
       <br><br>
     <form action="" id="crearPaciente">
       <br>
-      <h2>Nombre Completo</h1>
-      <input type="text" name="nombre" id="">
+      <h2>Nombre</h1>
+      <input type="text" name="nombre" id="nombre" required>
+      <h2>Apellidos</h1>
+      <input type="text" name="apellido" id="apellido" required>
       <br>
       <h2>DNI</h1>
-      <input type="text" name="dni" id="">
+      <input type="text" name="dni" id="dni" required>
       <br>
       <h2>TELEFONO</h1>
-      <input type="text" name="telefono" id="">
+      <input type="text" name="telefono" id="telefono" required>
       <br>
       <h2>FECHA NACIMIENTO</h1>
-      <input type="date" name="fechaNacimiento" id="">
+      <input type="date" name="fechaNacimiento" id="fechaNacimiento">
       <br><br>
       <span>
         <input type="button" value="ENVIAR" id="enviarCrearPaciente">
-        <input type="button" value="CANCELAR" id="cancelarCrearPaciente">
+        <input type="reset" value="CANCELAR" id="cancelarCrearPaciente">
       </span>
       <br>
     </form>
   </div>
   <div class="desplegable" id="contenedorFormPaciente" style="display: none;">
-      <h1>CREAR PACIENTE</h1>
+      <h1>AGENDAR CITA</h1>
       <br><br>
     <form action="" id="crearPaciente">
       <br>
@@ -62,15 +64,17 @@
     
     <div class="botones-superiores">
       <button class="boton-icono" id="">
-        <span> Paciente</span>
+        <span> <a href="pacientes.html">Paciente</a></span>
         
       </button>
 
       <button class="boton-icono">
-        <span> Cita</span>
-         
+        <span> <a href="citas.html">Cita</a></span>
       </button>
-      
+
+      <button class="boton-icono" id="contenedorFormCitas">
+        <span> Agendar Cita</span>
+      </button> 
     </div>
 
     <div class="icono-perfil">
@@ -86,6 +90,8 @@
       </span>
       <br>
       <br>
+          <div><h1>PACIENTES</h1></div>
+      <br>
     <div class="contenedor-cuadros">
       <div class="tarjeta doctor">
         <div class="info-doctor">
@@ -100,16 +106,10 @@
         </div>
       </div>
 
-      <!-- Más tarjetas vacías -->
-      <div class="tarjeta"></div>
-      <div class="tarjeta"></div>
-      <div class="tarjeta"></div>
-      <div class="tarjeta"></div>
-      <div class="tarjeta"></div>
-      <div class="tarjeta"></div>
-      <div class="tarjeta"></div>
+
     </div>
   </main>
 </body>
+<script src="../scripts/agendarCita.js"></script>
 <script src="../scripts/pacientes.js"></script>
 </html>

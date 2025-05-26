@@ -5,7 +5,7 @@ $(document).ready(function(){
       //Traer coleccion y hacer tarjetas
       $.ajax({
             type: "get",
-            url: "http://localhost:5000/pacientes",
+            url: "http://localhost:5000/citas",
             data: "data",
             dataType: "json",
             contentType: "application/json",

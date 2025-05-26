@@ -1,5 +1,5 @@
 * {
-  box-sizing: border-box;
+
   margin: 0;
   padding: 0;
   font-family: sans-serif;
@@ -10,8 +10,8 @@ body {
 }
 
 header {
-  height: 10dvh;
-  background-color: #00c2a8;
+
+  background-color: #1dc0aa;
   display: flex;
   justify-content: space-between;
   align-items: center;

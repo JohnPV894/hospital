@@ -18,7 +18,7 @@ $(document).ready(function(){
                         dataType: "json",
                         success: async function (response) {
                               if (response.esAdmin) {
-                                    window.location.href = "homeAdministrador.html";
+                                    window.location.href = "especialistas.html";
                               }
                               else if(response.logeado){
                                     window.location.href = "pacientes.html"
