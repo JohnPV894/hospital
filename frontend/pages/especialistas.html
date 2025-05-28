@@ -4,9 +4,40 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Panel Admin</title>
-  <link rel="stylesheet" href="../styles/adminStyle.css">
+  <link rel="stylesheet" href="../styles/especialistas.css">
+  <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
 </head>
 <body>
+
+  <div class="desplegable" id="contenedorFormPaciente" >
+    <h1>CREAR Especialista</h1>
+    <br><br>
+    <form action="" id="crearPaciente">
+      <br>
+      <h2>NOMBRE</h1>
+      <input type="text" name="nombre" id="nombre" required>
+      <h2>APELLIDOS</h1>
+      <input type="text" name="apellido" id="apellido" required>
+      <br>
+      <h2>DNI</h1>
+      <input type="text" name="dni" id="">
+      <br>
+      <h2>RAMA</h2>
+      <input type="text" name="rama" id="rama">
+      <h2>TELEFONO</h1>
+      <input type="text" name="telefono" id="">
+      <br>
+      <h2>FECHA NACIMIENTO</h1>
+      <input type="date" name="fechaNacimiento" id="">
+      <br><br>
+      <span>
+        <input type="button" value="ENVIAR" id="enviarCrearPaciente">
+        <input type="button" value="CANCELAR" id="cancelarCrearPaciente">
+      </span>
+      <br>
+    </form>
+  </div>
+
   <header>
     <div class="botones-superiores">
 
@@ -15,18 +46,27 @@
       </button>
 
     </div>
-    <div class="icono-perfil">
+
+    <div class="desplegable-micuenta">
       <button class="boton-icono">
-        <img src="../img/perfilIcon.png" alt="Perfil">
+        Mi Cuenta<img src="../img/perfilIcon.png" alt="Perfil">
       </button>
       <div>
             <button id="cerrarSesion">Cerrar Sesion</button>
       </div>
     </div>
-    
   </header>
 
+
   <main>
+          <span id="">
+          <input type="button" value="Crear Especialista" id="desplegarCrearPaciente">
+          <input type="button" value="Ver Historial Paciente">
+      </span>
+      <br>
+      <br>
+    <div><h1>Especialistas</h1></div>
+      <br>
     <div class="contenedor-cuadros">
       <div class="tarjeta doctor">
         <div class="info-doctor">
@@ -51,5 +91,7 @@
       <div class="tarjeta"></div>
     </div>
   </main>
+  <script src="../scripts/especialistas.js"></script>
+  <script src="../scripts/cerrarSesion.js"></script>
 </body>
 </html>
