@@ -12,7 +12,7 @@ $(document).ready(function(){
             success: async function ( response) {
                   response.forEach(element => {
                   $(".contenedor-cuadros").append(
-                        `<div class="tarjeta doctor">
+                        `<div class="tarjeta" data-id=${element._id}>
                           <div class="info-doctor">
                             <img src="../img/perfilIcon.png" alt="Foto" class="avatar">
                             <div class="texto">
@@ -20,6 +20,10 @@ $(document).ready(function(){
                               Apellido ${element.apellido}<br><br>
                               Nacimiento: ${element.fechaNacimiento}<br>
                               DNI: ${element.dni}
+                              <span> 
+                                    <input  type="button" value="Borrar" id="borrar"/>
+                                    <input  type="button" value="Editar" id="editar"/>  
+                              <span/>
                             </div>
                           </div>
                         </div>`
@@ -90,6 +94,25 @@ $(document).ready(function(){
             e.preventDefault();
             $("#contenedorFormPaciente").fadeOut();
             console.log("ocultar");
+      });
+      $(".contenedor-cuadros").on("click","#borrar", function (e) {
+            e.preventDefault();
+            let tarjeta = $(this).closest(".tarjeta");
+            let id = tarjeta.data("id")
+            console.log(id);
+            
+            $.ajax({
+                  type: "delete",
+                  url: "http://localhost:5000/citas/eliminar",
+                  data: JSON.stringify({id}),
+                  dataType: "json",
+                  contentType: "application/json",
+                  success: function (response) {
+                        if(response!=null){
+                              alert(response.mensaje);
+                        }
+                  }
+            });
       });
       
 })

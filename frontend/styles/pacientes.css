@@ -71,7 +71,7 @@ main {
   padding: 10px;
 }
 
-.tarjeta.doctor {
+.tarjeta {
   display: flex;
   align-items: center;
   padding: 15px;
@@ -83,6 +83,7 @@ main {
 }
 
 .avatar {
+  border:solid 1px ;
   width: 50px;
   height: 50px;
   border-radius: 50%;

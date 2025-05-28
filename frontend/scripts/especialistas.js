@@ -12,15 +12,19 @@ $(document).ready(function(){
             success: async function ( response) {
                   response.forEach(element => {
                   $(".contenedor-cuadros").append(
-                        `<div class="tarjeta doctor">
+                        `<div class="tarjeta" data-id=${element._id}>
                           <div class="info-doctor">
                             <img src="../img/perfilIcon.png" alt="Foto" class="avatar">
                             <div class="texto">
                               <strong>${element.nombre}</strong><br>
-                              Apellido ${element.apellido}<br><br>
+                              ${element.apellido}<br><br>
                               Rama: ${element.rama}<br>
                               Nacimiento: ${element.fechaNacimiento}<br>
                               DNI: ${element.dni}
+                              <span> 
+                                    <input  type="button" value="Borrar" id="borrar"/>
+                                    <input  type="button" value="Editar" id="editar"/>  
+                              <span/>
                             </div>
                           </div>
                         </div>`
@@ -41,30 +45,32 @@ $(document).ready(function(){
             let nombre = $("#nombre").val();
             let apellido = $("#apellido").val();
             let dni = $("#dni").val();
-            let telefono = $("#telefono").val();
+            let rama = $("#rama").val();
             let fechaNacimiento = $("#fechaNacimiento").val();
             let datos = {
-                        "dni":dni,
                         "nombre":nombre,
                         "apellido":apellido,
-                        "telefono":telefono,
+                        "dni":dni,
+                        "rama":rama,
                         "fechaNacimiento":fechaNacimiento
                   };
-            
             $.ajax({
                   type: "post",
-                  url: "http://localhost:5000/pacientes/crear",
+                  url: "http://localhost:5000/especialistas/crear",
                   data: JSON.stringify(datos),
                   dataType: "json",
                   contentType: "application/json",
                   success: function (response) {
-                        console.log(response);
+                        if (response.id==null || response==null) {
+                              alert("Especialista "+datos.nombre+" no pudo ser Creado")
+                        }else{
+                              alert("Especialista "+datos.nombre+" Creado Correctamente")
+                        }
                         
                   },
-                  error:alert("error al crear Paciente")
+                  
             });
-            console.log("Crear paciente");
-            
+            location.reload();
             
       });
 
@@ -81,16 +87,24 @@ $(document).ready(function(){
             console.log("ocultar");
       });
 
-      $("#desplegarCrearCita").click(function (e) { 
+      $(".contenedor-cuadros").on("click","#borrar", function (e) {
             e.preventDefault();
-            $("#contenedorFormPaciente").fadeIn();
-            console.log("mostrar");
+            let tarjeta = $(this).closest(".tarjeta");
+            let id = tarjeta.data("id")
+            console.log(id);
             
-      });
-      $("#cancelarCrearCita").click(function (e) { 
-            e.preventDefault();
-            $("#contenedorFormPaciente").fadeOut();
-            console.log("ocultar");
+            $.ajax({
+                  type: "delete",
+                  url: "http://localhost:5000/especialistas/eliminar",
+                  data: JSON.stringify({id}),
+                  dataType: "json",
+                  contentType: "application/json",
+                  success: function (response) {
+                        if(response!=null){
+                              alert(response.mensaje);
+                        }
+                  }
+            });
       });
       
 

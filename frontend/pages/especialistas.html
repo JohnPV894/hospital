@@ -9,8 +9,8 @@
 </head>
 <body>
 
-  <div class="desplegable" id="contenedorFormPaciente" >
-    <h1>CREAR Especialista</h1>
+  <div class="desplegable" id="contenedorFormPaciente" style="display: none;">
+    <h1>CREAR ESPECIALISTA</h1>
     <br><br>
     <form action="" id="crearPaciente">
       <br>
@@ -20,15 +20,13 @@
       <input type="text" name="apellido" id="apellido" required>
       <br>
       <h2>DNI</h1>
-      <input type="text" name="dni" id="">
+      <input type="text" name="dni" id="dni">
       <br>
       <h2>RAMA</h2>
       <input type="text" name="rama" id="rama">
-      <h2>TELEFONO</h1>
-      <input type="text" name="telefono" id="">
       <br>
       <h2>FECHA NACIMIENTO</h1>
-      <input type="date" name="fechaNacimiento" id="">
+      <input type="date" name="fechaNacimiento" id="fechaNacimiento">
       <br><br>
       <span>
         <input type="button" value="ENVIAR" id="enviarCrearPaciente">
@@ -81,14 +79,6 @@
         </div>
       </div>
 
-      <!-- Más tarjetas vacías -->
-      <div class="tarjeta"></div>
-      <div class="tarjeta"></div>
-      <div class="tarjeta"></div>
-      <div class="tarjeta"></div>
-      <div class="tarjeta"></div>
-      <div class="tarjeta"></div>
-      <div class="tarjeta"></div>
     </div>
   </main>
   <script src="../scripts/especialistas.js"></script>
