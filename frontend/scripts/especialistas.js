@@ -40,7 +40,7 @@ $(document).ready(function(){
       });
       
 
-      //Enviar formulario Crear paciente
+      //Enviar formulario Crear Especialisa
       $("#enviarCrearPaciente").click(function (e) { 
             let nombre = $("#nombre").val();
             let apellido = $("#apellido").val();
@@ -105,6 +105,7 @@ $(document).ready(function(){
                         }
                   }
             });
+            location.reload();
       });
       
 

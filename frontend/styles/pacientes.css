@@ -103,7 +103,7 @@ main {
   align-items: center;
   flex-direction: column;
   background: rgba(46, 46, 46, 0.726);
-  position: absolute;
+  position:fixed;
 }
 .desplegable h1{
   color: white;
