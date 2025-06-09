@@ -11,7 +11,7 @@ body {
 
 header {
 
-  background-color: #1dc0aa;
+  background-color: #21c727;
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -30,10 +30,10 @@ header {
     display: flex;
 }
 .boton-icono {
-  margin: 10px 20px;
+
   width: 60px;
   height: 60px;
-  background-color: #00c2a8;
+  background-color: #2bcf31;
   border: 1px solid #00695c;
   border-radius: 5px;
   cursor: pointer;
@@ -44,10 +44,20 @@ header {
   height: 70px;
   object-fit: contain;
 }
+.desplegable-micuenta{
+
+  outline: solid 1px #00695c;
+  margin-right: 1em;
+}
+.desplegable-micuenta .boton-icono{
+  width: 100%;
+  display: flex;
+  align-items: center;
+}
 /**/
-.icono-perfil img {
-  width: 30px;
-  height: 30px;
+.desplegable-micuenta img {
+  width: 40px;
+  height: 40px;
 }
 /**/
 main {
@@ -56,25 +66,28 @@ main {
   min-height: 90vh;
 }
 
-.contenedor-cuadros {
+.contenedor-tarjetas {
   display: grid;
   grid-template-columns: repeat(4, 1fr);
   gap: 20px;
 }
-.contenedor-cuadros span{
+.contenedor-tarjetas span{
   width: 100%;
 }
 .tarjeta {
-  border: 1px solid #00ff7f;
-  height: 150px;
-  background-color: #f5f5f5;
-  padding: 10px;
-}
-
-.tarjeta {
   display: flex;
   align-items: center;
+  height: 150px;
   padding: 15px;
+  border: 1px solid #00ff7f;
+  box-shadow: 0 4px 8px rgba(0, 255, 42, 0.3); 
+  border-radius: 10px;
+  background-color: #f5f5f5;
+  transition: 200ms; 
+}
+.tarjeta:hover {
+  transform: translateY(-5px); 
+  box-shadow: 0 8px 16px rgba(1, 163, 9, 0.3); /* Aumenta la sombra */
 }
 
 .info-doctor {

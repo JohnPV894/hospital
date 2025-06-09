@@ -12,54 +12,31 @@
     <div class="desplegable" id="contenedorFormPaciente" style="display: none;">
       <h1>CREAR PACIENTE</h1>
       <br><br>
-    <form action="" id="crearPaciente">
-      <br>
-      <h2>Nombre</h1>
-      <input type="text" name="nombre" id="nombre" required>
-      <h2>Apellidos</h1>
-      <input type="text" name="apellido" id="apellido" required>
-      <br>
-      <h2>DNI</h1>
-      <input type="text" name="dni" id="dni" required>
-      <br>
-      <h2>TELEFONO</h1>
-      <input type="text" name="telefono" id="telefono" required>
-      <br>
-      <h2>FECHA NACIMIENTO</h1>
-      <input type="date" name="fechaNacimiento" id="fechaNacimiento">
-      <br><br>
-      <span>
-        <input type="button" value="ENVIAR" id="enviarCrearPaciente">
-        <input type="reset" value="CANCELAR" id="cancelarCrearPaciente">
-      </span>
-      <br>
-    </form>
+      <form action="" id="crearPaciente">
+        <br>
+        <h2>Nombre</h1>
+        <input type="text" name="nombre" id="nombre" required>
+        <h2>Apellidos</h1>
+        <input type="text" name="apellido" id="apellido" required>
+        <br>
+        <h2>DNI</h1>
+        <input type="text" name="dni" id="dni" required>
+        <br>
+        <h2>TELEFONO</h1>
+        <input type="text" name="telefono" id="telefono" required>
+        <br>
+        <h2>FECHA NACIMIENTO</h1>
+        <input type="date" name="fechaNacimiento" id="fechaNacimiento">
+        <br><br>
+        <span>
+          <input type="button" value="ENVIAR" id="enviarCrearPaciente">
+          <input type="reset" value="CANCELAR" id="cancelarCrearPaciente">
+        </span>
+        <br>
+      </form>
   </div>
-  <div class="desplegable" id="contenedorFormPaciente" style="display: none;">
-      <h1>AGENDAR CITA</h1>
-      <br><br>
-    <form action="" id="crearPaciente">
-      <br>
-      <h2>Nombre Completo</h1>
-      <input type="text" name="nombre" id="">
-      <br>
-      <h2>DNI</h1>
-      <input type="text" name="dni" id="">
-      <br>
-      <h2>TELEFONO</h1>
-      <input type="text" name="telefono" id="">
-      <br>
-      <h2>FECHA NACIMIENTO</h1>
-      <input type="date" name="fechaNacimiento" id="">
-      <br><br>
-      <span>
-        <input type="button" value="ENVIAR" id="enviarCrearPaciente">
-        <input type="button" value="CANCELAR" id="cancelarCrearPaciente">
-      </span>
-      <br>
-    </form>
-  </div>
-  <!--<img src="../img/pacienteIcon.png" alt="Crear Usuario" <img src="../img/iconCitas1.png" alt="Crear Usuario">>-->
+
+
   <header>
     
     <div class="botones-superiores">
@@ -77,11 +54,15 @@
       </button> 
     </div>
 
-    <div class="icono-perfil">
+    <div class="desplegable-micuenta">
       <button class="boton-icono">
-        <img src="../img/perfilIcon.png" alt="Perfil">
+        Mi Cuenta<img src="../img/perfilIcon.png" alt="Perfil">
       </button>
+      <div>
+            <button id="cerrarSesion">Cerrar Sesion</button>
+      </div>
     </div>
+    
   </header>
   <main>
       <span id="">
@@ -92,23 +73,7 @@
       <br>
           <div><h1>PACIENTES</h1></div>
       <br>
-    <div class="contenedor-cuadros">
-
-      <!--
-            <div class="tarjeta doctor">
-        <div class="info-doctor">
-          <img src="../img/perfilIcon.png" alt="Foto" class="avatar">
-          <div class="texto">
-            <strong>Nombre</strong><br>
-            Apellido apellido<br><br>
-            Rama: Neumología<br>
-            Nacimiento: 01/01/1980<br>
-            DNI: 60373355B
-          </div>
-        </div>
-      </div>
-      -->
-
+    <div class="contenedor-tarjetas">
 
     </div>
   </main>

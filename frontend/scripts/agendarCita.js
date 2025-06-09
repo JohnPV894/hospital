@@ -51,18 +51,17 @@ $(document).ready(function(){
             }
             
       });
+      
       $("#contenedorFormCitas").click(function (e) { 
             e.preventDefault();
-            $("#contenedorCrearCita").fadeIn();
-            console.log(coleccionCitas);
-            console.log("/");
-            console.log(coleccionPacientes);
-             
+            $("#contenedorCrearCita").fadeIn();   
       });
+
       $("#esconderForm").click(function (e) { 
             e.preventDefault();
             $("#contenedorCrearCita").fadeOut();
-      });   
+      });
+
       //Enviar formulario Crear Cita
       $("#crearCita").click(function (e) { 
 

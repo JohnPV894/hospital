@@ -12,7 +12,7 @@ body {
 
 header {
 
-  background-color: #1dc0aa;
+  background-color: #2196F3;
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -34,7 +34,7 @@ header {
 
   width: 60px;
   height: 60px;
-  background-color: #00c2a8;
+  background-color: #2196F3;
   border: 1px solid #00695c;
   border-radius: 5px;
   cursor: pointer;
@@ -77,16 +77,19 @@ main {
   width: 100%;
 }
 .tarjeta {
-  border: 1px solid #00ff7f;
-  height: 150px;
-  background-color: #f5f5f5;
-  padding: 10px;
-}
-
-.tarjeta {
   display: flex;
   align-items: center;
+  height: 150px;
+  background-color: #f5f5f5;
+  border: 2px solid #76bdf7; 
+  box-shadow: 0 4px 8px rgba(0, 255, 234, 0.3); 
+  border-radius: 10px;  
   padding: 15px;
+  transition: 200ms; 
+}
+.tarjeta:hover {
+  transform: translateY(-5px); 
+  box-shadow: 0 8px 16px rgba(0, 255, 234, 0.3); /* Aumenta la sombra */
 }
 
 .info-doctor {

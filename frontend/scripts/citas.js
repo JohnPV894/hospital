@@ -1,6 +1,9 @@
 "use strict";
 
 $(document).ready(async function(){
+
+      await generarTarjetas();
+
       async function recuperarColecciones (){
             let citas;
             let pacientes;
@@ -40,6 +43,7 @@ $(document).ready(async function(){
       }
       async function generarTarjetas (){
             let colecciones = await recuperarColecciones();
+            
             colecciones.citas.forEach(citaObj => {
                   
                         
@@ -50,22 +54,22 @@ $(document).ready(async function(){
                   for (let index = 0; index < colecciones.pacientes.length; index++) {
       
                         if (citaObj.pacienteID===colecciones.pacientes[index]._id) {
-                              nombrePaciente=colecciones.pacientes[index].nombre+colecciones.pacientes[index].apellido;
+                              nombrePaciente=colecciones.pacientes[index].nombre+" "+colecciones.pacientes[index].apellido;
                         }
                   }
                   //con la id recuperamos los datos de especialista
                   for (let index = 0; index < colecciones.especialistas.length; index++) {
       
                         if (citaObj.especialistaID===colecciones.especialistas[index]._id) {
-                              nombreEspecialista=colecciones.especialistas[index].nombre+colecciones.especialistas[index].apellido;
+                              nombreEspecialista=colecciones.especialistas[index].nombre+" "+colecciones.especialistas[index].apellido;
                         }
                   }
-                  console.log(nombrePaciente,nombrePaciente,fechaFormateada);
-                  
-                  $(".contenedor-cuadros").append(
+                  //console.log(nombrePaciente,nombrePaciente,fechaFormateada);
+
+                  $(".contenedor-tarjetas").append(
                         `<div class="tarjeta" data-id=${citaObj._id}>
                           <div class="info-doctor">
-                            <img src="../img/perfilIcon.png" alt="Foto" class="avatar">
+                            <img src="../img/citasIcon.png" alt="Foto" class="avatar">
                             <div class="texto">
                               Paciente: ${nombrePaciente} <br>
                               Especialista: ${nombreEspecialista} <br>
@@ -81,51 +85,103 @@ $(document).ready(async function(){
       
             });
       }
-
-      await generarTarjetas();
-
-      //$("#desplegarCrearPaciente").click(function (e) { 
-      //      e.preventDefault();
-      //      $("#contenedorFormPaciente").fadeIn();
-      //      console.log("mostrar");
-      //      console.log(coleccionCitas);
-      //      
-      //});
-      //$("#cancelarCrearPaciente").click(function (e) { 
-      //      e.preventDefault();
-      //      $("#contenedorFormPaciente").fadeOut();
-      //      console.log("ocultar");
-      //});
-//
-      //$("#desplegarCrearCita").click(function (e) { 
-      //      e.preventDefault();
-      //      $("#contenedorFormPaciente").fadeIn();
-      //      console.log("mostrar");
-      //      
-      //});
-      //$("#cancelarCrearCita").click(function (e) { 
-      //      e.preventDefault();
-      //      $("#contenedorFormPaciente").fadeOut();
-      //      console.log("ocultar");
-      //});
-      //$(".contenedor-cuadros").on("click","#borrar", function (e) {
-      //      e.preventDefault();
-      //      let tarjeta = $(this).closest(".tarjeta");
-      //      let id = tarjeta.data("id")
-      //      console.log(id);
-      //      
-      //      $.ajax({
-      //            type: "delete",
-      //            url: "http://localhost:5000/citas/eliminar",
-      //            data: JSON.stringify({id}),
-      //            dataType: "json",
-      //            contentType: "application/json",
-      //            success: function (response) {
-      //                  if(response!=null){
-      //                        alert(response.mensaje);
-      //                  }
-      //            }
-      //      });
-      //});
       
+      function vaciarContenedorTarjetas() {
+            $(".contenedor-tarjetas").empty();
+      }
+
+      $("#crearCita").click(async function(e){
+
+            if ($("#fechaCita").val()!=="" && $("#especialista").val()!=="" && $("#paciente").val()!=="" ) {
+                  e.preventDefault();
+                  vaciarContenedorTarjetas();
+                  await generarTarjetas();   
+            } 
+
+      })
+
+      $("#desplegarModalFecha").click(function (e) { 
+            e.preventDefault();
+            $("#modalFechas").fadeIn();
+      });
+      $("#desplegarModalRangos").click(function (e) { 
+            e.preventDefault();
+            $("#modalRangos").fadeIn();
+      });
+      
+      $("#enviarModalRangos").click(function (e) { 
+            e.preventDefault();
+            if ( $("#fechaInicial").val() !== "" && $("#fechaFinal").val() !== "" && $("#asistenciaOpcion").val() !== "") {
+                  let datos ={
+                        "fechaInicio":$("#fechaInicial").val(),
+                        "fechaFinal": $("#fechaFinal").val(),
+                        "filtroAsistencia":null
+                  }
+                  if ($("#asistenciaOpcion").val()==="Si") {
+                        datos.filtroAsistencia=true;
+                  }else if($("#asistenciaOpcion").val()==="No"){
+                        datos.filtroAsistencia=false;
+                  }else if($("#asistenciaOpcion").val()==="Ver Todos"){
+                        datos.filtroAsistencia=null;
+                  }
+
+                  console.log(datos);
+                  
+                  $.ajax({
+                        type: "post",
+                        url: "http://localhost:5000/citas/filtrar/rango",
+                        data: JSON.stringify(datos),
+                        dataType: "json",
+                        contentType: "application/json",
+                        success: async function (response) {
+                              vaciarContenedorTarjetas();
+                              let colecciones = await recuperarColecciones();
+                              response.respuesta.forEach(citaObj => {
+                                            
+                                    let nombrePaciente;
+                                    let nombreEspecialista;
+                                    let fechaFormateada=citaObj.fecha; // Tue, 12 May 2020 23:50:21 GMT;
+                                    //Con la id recuperamos los datos de paciente      
+                                    for (let index = 0; index < colecciones.pacientes.length; index++) {
+                                    
+                                          if (citaObj.pacienteID===colecciones.pacientes[index]._id) {
+                                                nombrePaciente=colecciones.pacientes[index].nombre+" "+colecciones.pacientes[index].apellido;
+                                          }
+                                    }
+                                    //con la id recuperamos los datos de especialista
+                                    for (let index = 0; index < colecciones.especialistas.length; index++) {
+                                    
+                                          if (citaObj.especialistaID===colecciones.especialistas[index]._id) {
+                                                nombreEspecialista=colecciones.especialistas[index].nombre+" "+colecciones.especialistas[index].apellido;
+                                          }
+                                    }
+
+                                    $(".contenedor-tarjetas").append(
+                                          `<div class="tarjeta" data-id=${citaObj._id}>
+                                            <div class="info-doctor">
+                                              <img src="../img/citasIcon.png" alt="Foto" class="avatar">
+                                              <div class="texto">
+                                                Paciente: ${nombrePaciente} <br>
+                                                Especialista: ${nombreEspecialista} <br>
+                                                Fecha: ${fechaFormateada}
+                                                <span> 
+                                                      <input  type="button" value="Borrar" id="borrar"/>
+                                                      <input  type="button" value="Editar" id="editar"/>  
+                                                <span/>
+                                              </div>
+                                            </div>
+                                          </div>`
+                                    )
+                                    
+                              });
+                              $("#modalRangos").fadeOut();
+                        }
+                  });
+            }
+
+      });
+      $("#esconderModalRangos").click(function (e) { 
+            e.preventDefault();
+            $("#modalRangos").fadeOut();
+      });
 })

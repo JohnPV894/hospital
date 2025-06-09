@@ -3,40 +3,7 @@
 $(document).ready(function(){
       let coleccionCitas;
       //Traer coleccion y hacer tarjetas
-      $.ajax({
-            type: "get",
-            url: "http://localhost:5000/pacientes",
-            data: "data",
-            dataType: "json",
-            contentType: "application/json",
-            success: async function ( response) {
-                  response.forEach(element => {
-                  $(".contenedor-cuadros").append(
-                        `<div class="tarjeta" data-id=${element._id}>
-                          <div class="info-doctor">
-                            <img src="../img/perfilIcon.png" alt="Foto" class="avatar">
-                            <div class="texto">
-                              <strong>${element.nombre}</strong><br>
-                              Apellido ${element.apellido}<br><br>
-                              Nacimiento: ${element.fechaNacimiento}<br>
-                              DNI: ${element.dni}
-                              <span> 
-                                    <input  type="button" value="Borrar" id="borrar"/>
-                                    <input  type="button" value="Editar" id="editar"/>  
-                              <span/>
-                            </div>
-                          </div>
-                        </div>`
-                  );
-                  });
-            },
-            error: function(xhr, status, error) {
-                  alert("Fallo al recuperar Tarjetas");
-                  alert("vuelva a intentarlo en unos minutos")
-                  console.error(error);
-            }
-            
-      });
+      generarTarjetas();
 
 
       //Enviar formulario Crear paciente
@@ -46,7 +13,8 @@ $(document).ready(function(){
             let dni = $("#dni").val();
             let telefono = $("#telefono").val();
             let fechaNacimiento = $("#fechaNacimiento").val();
-            let datos = {
+            if (nombre !== null && apellido !== null && dni !== null && telefono !== null && fechaNacimiento !== null ) {
+                  let datos = {
                         "dni":dni,
                         "nombre":nombre,
                         "apellido":apellido,
@@ -54,29 +22,28 @@ $(document).ready(function(){
                         "fechaNacimiento":fechaNacimiento
                   };
             
-            $.ajax({
-                  type: "post",
-                  url: "http://localhost:5000/pacientes/crear",
-                  data: JSON.stringify(datos),
-                  dataType: "json",
-                  contentType: "application/json",
-                  success: function (response) {
-                        console.log(response);
-                        
-                  },
-                  error:alert("error al crear Paciente")
-            });
+                  $.ajax({
+                        type: "post",
+                        url: "http://localhost:5000/pacientes/crear",
+                        data: JSON.stringify(datos),
+                        dataType: "json",
+                        contentType: "application/json",
+                        success: function (response) {
+                              console.log(response);
+
+                        },
+                        error:alert("error al crear Paciente")
+                  });
+                  vaciarContenedorTarjetas();
+                  generarTarjetas();
+            }
             console.log("Crear paciente");
-            location.reload();
-            
       });
 
       $("#desplegarCrearPaciente").click(function (e) { 
             e.preventDefault();
             $("#contenedorFormPaciente").fadeIn();
             console.log("mostrar");
-            console.log(coleccionCitas);
-            
       });
       $("#cancelarCrearPaciente").click(function (e) { 
             e.preventDefault();
@@ -84,18 +51,7 @@ $(document).ready(function(){
             console.log("ocultar");
       });
 
-      $("#desplegarCrearCita").click(function (e) { 
-            e.preventDefault();
-            $("#contenedorFormPaciente").fadeIn();
-            console.log("mostrar");
-            
-      });
-      $("#cancelarCrearCita").click(function (e) { 
-            e.preventDefault();
-            $("#contenedorFormPaciente").fadeOut();
-            console.log("ocultar");
-      });
-      $(".contenedor-cuadros").on("click","#borrar", function (e) {
+      $(".contenedor-tarjetas").on("click","#borrar",async function (e) {
             e.preventDefault();
             let tarjeta = $(this).closest(".tarjeta");
             let id = tarjeta.data("id")
@@ -113,7 +69,51 @@ $(document).ready(function(){
                         }
                   }
             });
+            vaciarContenedorTarjetas();
+            await generarTarjetas();
 
       });
+
+      async function recuperarPacientes (){
+            let pacientes;
+            await $.ajax({
+                  type: "get",
+                  url: "http://localhost:5000/pacientes",
+                  data: "data",
+                  dataType: "json",
+                  contentType: "application/json",
+                  success: function (response) {
+                        pacientes = response;
+                  }
+            });
+            return pacientes;
+
+      }
+      async function generarTarjetas() {
+            let coleccion = await recuperarPacientes()
+            coleccion.forEach(cadaElemento => {
+                  $(".contenedor-tarjetas").append(
+                        `<div class="tarjeta" data-id=${cadaElemento._id}>
+                          <div class="info-doctor">
+                            <img src="../img/perfilIcon.png" alt="Foto" class="avatar">
+                            <div class="texto">
+                              <strong>${cadaElemento.nombre}</strong><br>
+                              <var> ${cadaElemento.apellido}<var/><br><br>
+                              Telefono:${cadaElemento.telefono}<br>
+                              Nacimiento: ${cadaElemento.fechaNacimiento}<br>
+                              DNI: ${cadaElemento.dni}
+                              <span> 
+                                    <input  type="button" value="Borrar" id="borrar"/>
+                                    <input  type="button" value="Editar" id="editar"/>  
+                              <span/>
+                            </div>
+                          </div>
+                        </div>`
+                  );
+                  });
+      }
+      function vaciarContenedorTarjetas() {
+            $(".contenedor-tarjetas").empty();
+      }
       
 })

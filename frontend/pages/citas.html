@@ -9,7 +9,7 @@
 
 </head>
 <body>
-
+  <!--Modal Crear Citas-->
   <div class="desplegable" id="contenedorCrearCita" style="display:none ;">
       <h1>AGENDAR CITAS</h1>
       <br><br>
@@ -40,7 +40,50 @@
       <br>
     </form>
   </div>
-  <!--<img src="../img/pacienteIcon.png" alt="Crear Usuario" <img src="../img/iconCitas1.png" alt="Crear Usuario">>-->
+
+  <!--Modal Filtro Rangos-->
+  <div id="modalRangos" class="desplegable" style="display: none;">
+    <h1>FILTRAR POR RANGO DE FECHAS</h1>
+    <br><br>
+    <form action="" id="formRangos">
+      <br>
+
+      <h2>ELEGIR FECHA INICIAL</h1>
+      <input type="date" name="" id="fechaInicial"  name="" required>
+
+      <h2>ELEGIR FECHA FINAL</h1>
+      <input type="date" name="" id="fechaFinal"  name="" required>
+      
+      <h2>FILTRAR ASISTENCIA</h2>
+      <input list="opcionesAsistencia" id="asistenciaOpcion"  name="" required>
+      <datalist id="opcionesAsistencia">
+        <option value="Si" data-id=""></option>
+        <option value="No" data-id=""></option>
+        <option value="Ver Todos" data-id=""></option>
+      </datalist>
+      <br><br>
+      <span>
+        <input type="button" value="ENVIAR" id="enviarModalRangos">
+        <input type="button" value="CANCELAR" id="esconderModalRangos">
+      </span>
+      <br>
+    </form>
+  </div>
+
+  <!--Modal Filtro Fecha-->
+  <div id="modalFechas" class="desplegable" style="display: none;">
+    <h1>FILTRAR POR FECHAS</h1>
+    <br><br>
+    <form action="">
+      
+            <br><br>
+      <span>
+        <input type="button" value="ENVIAR" id="enviarModalFechas">
+        <input type="button" value="CANCELAR" id="esconderModalFechas">
+      </span>
+      <br>
+    </form>
+  </div>
  <header>
     
     <div class="botones-superiores">
@@ -66,24 +109,27 @@
             <button id="cerrarSesion">Cerrar Sesion</button>
       </div>
     </div>
+
   </header>
   <main>
       <span id="">
-          <input type="button" value="Crear Paciente" id="desplegarCrearPaciente">
-          <input type="button" value="Ver Historial Paciente">
+        <input type="button" value="Filtrar Rango" id="desplegarModalRangos">
+        <input type="button" value="Filtrar Fecha" id="desplegarModalFecha">
+        <input type="button" value="Ver Todas" id="">
       </span>
+      <br><br>
+      <div><h1>CITAS</h1></div>
       <br>
-      <br>
-    <div class="contenedor-cuadros">
+    <div class="contenedor-tarjetas">
       <div class="tarjeta doctor">
         <div class="info-doctor">
           <img src="../img/perfilIcon.png" alt="Foto" class="avatar">
           <div class="texto">
             <strong>Nombre</strong><br>
-            Apellido apellido<br><br>
-            Rama: Neumología<br>
-            Nacimiento: 01/01/1980<br>
-            DNI: 60373355B
+            Paciente:Pepe<br><br>
+            Especialista: Neumología<br>
+            CITA: 01/01/1980<br>
+            
           </div>
         </div>
       </div>

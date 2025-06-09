@@ -10,6 +10,7 @@ $(document).ready(function(){
             dataType: "json",
             contentType: "application/json",
             success: async function ( response) {
+                  coleccionEspecialistas=response;
                   response.forEach(element => {
                   $(".contenedor-cuadros").append(
                         `<div class="tarjeta" data-id=${element._id}>
