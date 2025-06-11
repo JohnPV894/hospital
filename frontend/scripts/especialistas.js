@@ -12,7 +12,7 @@ $(document).ready(function(){
             success: async function ( response) {
                   coleccionEspecialistas=response;
                   response.forEach(element => {
-                  $(".contenedor-cuadros").append(
+                  $(".contenedor-tarjetas").append(
                         `<div class="tarjeta" data-id=${element._id}>
                           <div class="info-doctor">
                             <img src="../img/perfilIcon.png" alt="Foto" class="avatar">
@@ -88,7 +88,7 @@ $(document).ready(function(){
             console.log("ocultar");
       });
 
-      $(".contenedor-cuadros").on("click","#borrar", function (e) {
+      $(".contenedor-tarjetas").on("click","#borrar", function (e) {
             e.preventDefault();
             let tarjeta = $(this).closest(".tarjeta");
             let id = tarjeta.data("id")

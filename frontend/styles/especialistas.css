@@ -68,12 +68,12 @@ main {
   min-height: 90vh;
 }
 
-.contenedor-cuadros {
+.contenedor-tarjetas {
   display: grid;
   grid-template-columns: repeat(4, 1fr);
   gap: 20px;
 }
-.contenedor-cuadros span{
+.contenedor-tarjetas span{
   width: 100%;
 }
 .tarjeta {

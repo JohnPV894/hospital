@@ -13,7 +13,7 @@
   <div class="desplegable" id="contenedorCrearCita" style="display:none ;">
       <h1>AGENDAR CITAS</h1>
       <br><br>
-    <form action="" id="crearPaciente">
+    <form action="" id="creaCitaForm">
       <br>
 
       <h2>ELEGIR PACIENTE</h1>
@@ -84,6 +84,40 @@
       <br>
     </form>
   </div>
+  <!--Modal Editar-->
+  <div class="desplegable" id="cont-form-editar" style="display: none;">
+      <h1>EDITAR CITA</h1>
+      <br><br>
+    <form action="" id="editarCitaForm">
+      <br>
+
+      <h2>PACIENTE</h1>
+      <input type="text" name="paciente" id="paciente"  name="" >
+      <br>
+
+      <h2>ESPECIALISTA</h1>
+      <input type="text" name="especialista" id="especialista" required>
+      <br>
+
+      <h2>SELECCIONE FECHA CITA</h1>
+      <input type="date" name="fechaCita" id="fechaCita" >
+      <br><br>
+
+      <h2>ASISTENCIA CITA</h1>
+      <input list="" name="fechaCita" id="fechaCita" >
+      <datalist id="opcionesAsistencia">
+        <option value="Si" data-id=""></option>
+        <option value="No" data-id=""></option>
+        <option value="Ver Todos" data-id=""></option>
+      </datalist>
+      <br><br>
+      <span>
+        <input type="button" value="ENVIAR" id="editarCita">
+        <input type="button" value="CANCELAR" id="esconderFormEditar">
+      </span>
+      <br>
+      </form>
+    </div>
  <header>
     
     <div class="botones-superiores">
@@ -102,9 +136,7 @@
     </div>
 
     <div class="desplegable-micuenta">
-      <button class="boton-icono">
-        Mi Cuenta<img src="../img/perfilIcon.png" alt="Perfil">
-      </button>
+
       <div>
             <button id="cerrarSesion">Cerrar Sesion</button>
       </div>
@@ -115,12 +147,13 @@
       <span id="">
         <input type="button" value="Filtrar Rango" id="desplegarModalRangos">
         <input type="button" value="Filtrar Fecha" id="desplegarModalFecha">
-        <input type="button" value="Ver Todas" id="">
+        <input type="button" value="Ver Todas" id="verTodo">
       </span>
-      <br><br>
+      <br><br> 
       <div><h1>CITAS</h1></div>
       <br>
     <div class="contenedor-tarjetas">
+
       <div class="tarjeta doctor">
         <div class="info-doctor">
           <img src="../img/perfilIcon.png" alt="Foto" class="avatar">
