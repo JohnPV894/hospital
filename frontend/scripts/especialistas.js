@@ -21,7 +21,7 @@ $(document).ready(function(){
                               ${element.apellido}<br><br>
                               Rama: ${element.rama}<br>
                               Nacimiento: ${element.fechaNacimiento}<br>
-                              DNI: ${element.dni}
+                              DNI: ${element.dni} <br>
                               <span> 
                                     <input  type="button" value="Borrar" id="borrar"/>
                                     <input  type="button" value="Editar" id="editar"/>  

@@ -57,8 +57,9 @@ header {
 }
 /**/
 .desplegable-micuenta img {
-  width: 40px;
-  height: 40px;
+  width: 32px;
+  height: 32px;
+  margin-left: 8px;
 }
 /**/
 main {
@@ -104,6 +105,7 @@ main {
 }
 
 .texto {
+  padding-left: 20px;
   font-size: 14px;
 }
 .botones-tarjeta{
@@ -146,9 +148,14 @@ main {
   justify-content: center;
 }
 .desplegable Span Input{
-
+  border-radius: 14px;
+  background: black;
+  color: white;
+  padding: 12px 10px;
   width: 100%;
   margin: 10px;
+  border: none;
+  font-weight: bold;
 }
 header {
   background-color: #FF9800;
@@ -174,7 +181,7 @@ header {
   padding: 12px 20px;
   border-radius: 12px;
   cursor: pointer;
-  transition: background-color 0.3s ease, transform 0.2s ease;
+  transition: 200ms;
   box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
 }
 
@@ -196,7 +203,7 @@ header {
   border-radius: 12px;
   border: none;
   padding: 10px 15px;
-  transition: background-color 0.3s ease;
+  transition: 200ms;
 }
 
 .boton-icono:hover {
@@ -225,15 +232,18 @@ header {
   padding: 8px 12px;
   border-radius: 10px;
   cursor: pointer;
-  transition: background-color 0.3s ease;
+  transition: 200ms;
 }
 
 .desplegable-micuenta button:hover {
   background-color: #ffe0b2;
 }
 
-.desplegable-micuenta img {
-  width: 32px;
-  height: 32px;
-  margin-left: 8px;
+#desplegarModalRangos, #desplegarModalFecha, #verTodo{
+  padding: 8px 8px;
+  border-radius: 8px;
+  font-weight: bold;
+  border: solid 1px rgba(26, 105, 98, 0.479);
+  box-shadow: 2px 3px 4px rgba(26, 105, 99, 0.671);
+
 }

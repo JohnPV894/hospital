@@ -76,10 +76,10 @@ $(document).ready(async function(){
                           <div class="info-doctor">
                             <img src="../img/citasIcon.png" alt="Foto" class="avatar">
                             <div class="texto">
-                              Paciente: ${nombrePaciente} <br>
-                              Especialista: ${nombreEspecialista} <br>
-                              Fecha: ${fechaFormateada} <br>
-                              Asistio:  ${asistio}<br>
+                              <strong>Paciente:</strong> ${nombrePaciente} <br>
+                              <strong>Especialista:</strong> ${nombreEspecialista} <br>
+                              <strong>Fecha:</strong> ${fechaFormateada} <br>
+                              <strong>Asistio:</strong>  ${asistio}<br>
                               <span class="botones-tarjeta"> 
                                     <input  type="button" value="Borrar" id="borrar"/>
                                     <input  type="button" value="Editar" id="editar"/>  

@@ -1,13 +1,13 @@
 "use strict";
 
-$(document).ready(function(){
+$(document).ready(async function(){
       let coleccionCitas;
       //Traer coleccion y hacer tarjetas
-      generarTarjetas();
+      await generarTarjetas();
 
 
       //Enviar formulario Crear paciente
-      $("#enviarCrearPaciente").click(function (e) { 
+      $("#enviarCrearPaciente").click(async function (e) { 
             let nombre = $("#nombre").val();
             let apellido = $("#apellido").val();
             let dni = $("#dni").val();
@@ -32,10 +32,9 @@ $(document).ready(function(){
                               console.log(response);
 
                         },
-                        error:alert("error al crear Paciente")
                   });
                   vaciarContenedorTarjetas();
-                  generarTarjetas();
+                  await generarTarjetas();
             }
             console.log("Crear paciente");
       });
@@ -99,9 +98,9 @@ $(document).ready(function(){
                             <div class="texto">
                               <strong>${cadaElemento.nombre}</strong><br>
                               <var> ${cadaElemento.apellido}<var/><br><br>
-                              Telefono:${cadaElemento.telefono}<br>
-                              Nacimiento: ${cadaElemento.fechaNacimiento}<br>
-                              DNI: ${cadaElemento.dni}
+                              <strong>Telefono:</strong>${cadaElemento.telefono}<br>
+                              <strong>Nacimiento:</strong> ${cadaElemento.fechaNacimiento}<br>
+                              <strong>DNI:</strong> ${cadaElemento.dni} <br>
                               <span> 
                                     <input  type="button" value="Borrar" id="borrar"/>
                                     <input  type="button" value="Editar" id="editar"/>  

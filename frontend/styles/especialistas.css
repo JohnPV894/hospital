@@ -128,7 +128,7 @@ main {
   font-weight: bold;
 }
 .desplegable #crearPaciente{
-
+  border-radius: 15px;
   background: rgb(255 255 255);
   display: flex;
   flex-direction: column;
@@ -148,4 +148,109 @@ main {
 .desplegable Span Input{
   width: 100%;
   margin: 10px;
+}
+
+.desplegable Span{
+  display: flex;
+  justify-content: center;
+}
+.desplegable Span Input{
+  border-radius: 14px;
+  background: black;
+  color: white;
+  padding: 12px 10px;
+  width: 100%;
+  margin: 10px;
+  border: none;
+  font-weight: bold;
+}
+header {
+  background-color: #08c4dd;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 15px 30px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  border-bottom: 4px solid #00c4e6;
+}
+
+.botones-superiores {
+  display: flex;
+  gap: 15px;
+}
+
+.botones-superiores button {
+  background-color: #ffffff;
+  color: #333;
+  font-weight: bold;
+  font-size: 1rem;
+  border: none;
+  padding: 12px 20px;
+  border-radius: 12px;
+  cursor: pointer;
+  transition: background-color 0.3s ease, transform 0.2s ease;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+.botones-superiores button:hover {
+  background-color: #b0edf8;
+  transform: translateY(-2px);
+}
+
+.botones-superiores button span a {
+  text-decoration: none;
+  color: inherit;
+}
+
+.boton-icono {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  background-color: #fff;
+  border-radius: 12px;
+  border: none;
+  padding: 10px 15px;
+  transition: background-color 0.3s ease;
+}
+
+.boton-icono:hover {
+  background-color: #05b2c9;
+}
+
+.boton-icono img {
+  width: 30px;
+  height: 30px;
+  object-fit: contain;
+}
+
+.desplegable-micuenta {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  gap: 5px;
+}
+
+.desplegable-micuenta button {
+  background-color: #ffffff;
+  color: #333;
+  font-weight: 600;
+  font-size: 0.95rem;
+  border: none;
+  padding: 8px 12px;
+  border-radius: 10px;
+  cursor: pointer;
+  transition: 200ms;
+}
+
+.desplegable-micuenta button:hover {
+  background-color: #b2f3ff;
+}
+
+#desplegarCrearPaciente, #verHistorial{
+  padding: 8px 8px;
+  border-radius: 8px;
+  font-weight: bold;
+  border: solid 1px rgba(26, 105, 98, 0.479);
+  box-shadow: 2px 3px 4px rgba(26, 105, 99, 0.671);
+
 }
