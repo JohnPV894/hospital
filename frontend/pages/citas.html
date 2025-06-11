@@ -74,9 +74,17 @@
   <div id="modalFechas" class="desplegable" style="display: none;">
     <h1>FILTRAR POR FECHAS</h1>
     <br><br>
-    <form action="">
-      
-            <br><br>
+    <form action="" id="formFecha">
+      <h2>ELEGIR FECHA </h1>
+      <input type="date" name="" id="fechaFiltro"  name="" required>
+      <br><br>
+      <h2>ELEGIR FILTRO</h2>
+      <input list="filtro" id="opcionFiltro"  name="" required>
+      <datalist id="filtro">
+        <option value="DIA" data-id=""></option>
+        <option value="MES" data-id=""></option>
+        <option value="SEMANA" data-id=""></option>
+      </datalist>
       <span>
         <input type="button" value="ENVIAR" id="enviarModalFechas">
         <input type="button" value="CANCELAR" id="esconderModalFechas">
@@ -146,7 +154,7 @@
   <main>
       <span id="">
         <input type="button" value="Filtrar Rango" id="desplegarModalRangos">
-        <input type="button" value="Filtrar Fecha" id="desplegarModalFecha">
+
         <input type="button" value="Ver Todas" id="verTodo">
       </span>
       <br><br> 

@@ -54,7 +54,7 @@ $(document).ready(async function(){
                   let mes = fechaFormateada.getMonth();
                   let año = fechaFormateada.getFullYear()
                   fechaFormateada =`${dia}/${mes}/${año}`
-                  let asistio = citaObj.Asistio?"Asistio":"No Asistio";
+                  let asistio = citaObj.asistio?"Asistio":"No Asistio";
                   //Con la id recuperamos los datos de paciente      
                   for (let index = 0; index < colecciones.pacientes.length; index++) {
       
@@ -188,7 +188,7 @@ $(document).ready(async function(){
                                                   </div>
                                                 </div>`
                                           )
-
+                                          
                                     });
                               }
                               
@@ -208,11 +208,37 @@ $(document).ready(async function(){
             vaciarContenedorTarjetas();
             generarTarjetas();
       });
+      $("#enviarModalFechas").click(async function (e) { 
+            e.preventDefault();
+
+            let fechaFiltro = $("#fechaFiltro").val();
+            let filtro = $("#opcionFiltro").val();
+ 
+            
+            if (filtro==="DIA") {
+                  filtro="dia";
+            } else if(filtro==="MES"){
+                  filtro="mes";
+            }else if(filtro=== "SEMANA"){
+                  filtro="semana";
+            }
+            console.log({filtroForm:filtro,fecha:fechaFiltro});
+            
+            let consulta = $.ajax({
+                  type: "post",
+                  url: "http://localhost:5000/citas/filtrar/fecha",
+                  data: JSON.stringify({"filtroForm":`${filtro}`,"fecha":`${fechaFiltro}`}),
+                  dataType: "dataType",
+                  success: function (response) {
+                        console.log(response);
+                  }
+            });
+      });
 
       $(".contenedor-tarjetas").on("click","#borrar",async function (e) {
             e.preventDefault();
             let tarjeta = $(this).closest(".tarjeta");
-            let id = tarjeta.data("id")
+            let id = tarjeta.data("id");
             console.log(id);
             
             $.ajax({

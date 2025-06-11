@@ -108,7 +108,12 @@ main {
 .texto {
   font-size: 14px;
 }
-
+#borrar , #editar{
+  border-radius: 10px;
+  padding: 5px 10px;
+  background: fixed;
+  border: solid 1px;
+}
 
 /*Formulario Desplegable*/
 .desplegable {

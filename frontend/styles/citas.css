@@ -108,6 +108,13 @@ main {
   padding-left: 20px;
   font-size: 14px;
 }
+#borrar , #editar{
+  border-radius: 10px;
+  padding: 5px 10px;
+  background: fixed;
+  border: solid 1px;
+}
+
 .botones-tarjeta{
   width: 100%;
 }
@@ -128,8 +135,8 @@ main {
   color: white;
   font-weight: bold;
 }
-.desplegable #creaCitaForm, #formRangos, #editarCitaForm{
-  
+.desplegable #creaCitaForm, #formRangos, #editarCitaForm , #formFecha{
+  border-radius: 14px;
   background: rgb(255 255 255);
   display: flex;
   flex-direction: column;
@@ -137,7 +144,7 @@ main {
   padding-right: 5vw;
 }
 
-.desplegable #creaCitaForm>input ,#formRangos>input ,#editarCitaForm>input{
+.desplegable #creaCitaForm>input ,#formRangos>input ,#editarCitaForm>input ,#formFecha>input{
   border-radius: 13px;
   border: solid 1px rgba(128, 128, 128, 0.466);
   padding: 10px 20px;
